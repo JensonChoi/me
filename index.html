@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Jenson Choi | Software Engineer &amp; Game Creator</title>
+<meta name="description" content="Personal website of Jenson Choi, a software engineer interested in AI, distributed systems, and building browser-based games. Explore Jenson's Arcade." />
+<meta property="og:title" content="Jenson Choi | Software Engineer & Game Creator" />
+<meta property="og:description" content="Personal website of Jenson Choi, a software engineer interested in AI, distributed systems, and building browser-based games. Explore Jenson's Arcade." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="%BASE_URL%images/social-preview.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Jenson Choi | Software Engineer & Game Creator" />
+<meta name="twitter:description" content="Software, curiosity, and a few browser games. Explore Jenson's Arcade." />
+<meta name="twitter:image" content="%BASE_URL%images/social-preview.jpg" />
+<meta name="theme-color" content="#FAFAF9" />
+<link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg" />
+<script>
+try { const saved = localStorage.getItem('jenson-theme'); document.documentElement.dataset.theme = saved === 'light' || saved === 'dark' ? saved : matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; } catch { document.documentElement.dataset.theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+</script>
+</head>
+<body id="top">
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="app"></div>
+<noscript>Please enable JavaScript to view Jenson's homepage and arcade.</noscript>
+<script type="module" src="/src/main.ts"></script>
+</body>
+</html>
