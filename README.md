@@ -35,43 +35,21 @@ External game and source links open a new tab. Future same-origin game paths suc
 
 ## Deploy to GitHub Pages
 
-1. Push this project to a GitHub repository.
-2. In repository **Settings → Pages**, select **GitHub Actions** as the source.
-3. Add `.github/workflows/pages.yml` with the following workflow. Replace `YOUR_REPOSITORY` with the repository name. For a `username.github.io` repository or custom domain, use `/` as the build base instead.
+The pipeline is defined in [`.github/workflows/pages.yml`](.github/workflows/pages.yml). It installs locked dependencies with `npm ci`, runs strict TypeScript checks, and builds the site on every branch push and pull request targeting `main`. Successful pushes to `main` deploy the generated `dist/` artifact to GitHub Pages. You can also run the workflow manually on `main`; other branches only run the build.
 
-```yaml
-name: Deploy website
-on:
-  push:
-    branches: [main]
-  workflow_dispatch:
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-concurrency:
-  group: pages
-  cancel-in-progress: true
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
-      - run: npm ci
-      - run: npm run build -- --base=/YOUR_REPOSITORY/
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
-      - id: deployment
-        uses: actions/deploy-pages@v4
+To enable deployment:
+
+1. In repository **Settings → Pages → Build and deployment**, select **GitHub Actions** as the source.
+2. Merge the workflow into `main` and push. Follow **Actions → Website CI/CD** to monitor the build and deployment.
+3. Open the URL reported by the `github-pages` deployment environment. For this repository, the expected URL is <https://jensonchoi.github.io/me/>.
+
+The workflow builds with `--base=/me/`. If the repository is renamed, update that value; use `/` for a `username.github.io` repository or custom domain. Deployment uses GitHub's built-in token and requires no custom secrets. Only the deployment job receives Pages and OIDC write permissions. Deployments are serialized so an active deployment can finish.
+
+To reproduce the CI build locally:
+
+```sh
+npm ci
+npm run build -- --base=/me/
 ```
 
 Vite applies the base path to application assets; data-driven image URLs use `import.meta.env.BASE_URL`. Production hosting is not configured by the local build. After publishing, check the live links and consider adding a domain-specific sitemap and robots.txt.
