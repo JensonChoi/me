@@ -402,7 +402,7 @@ Create three initial game entries, corresponding to projects Jenson has been wor
 
 These should be configurable placeholders until their actual deployment URLs and screenshots are provided.
 
-### Game 1: Super Mario Bros. Clone
+### Game 1: Pixelbound Adventure
 
 **Description:**
 "A retro-inspired 8-bit platformer featuring multiple worlds, hidden secrets, and classic side-scrolling gameplay."
@@ -413,13 +413,13 @@ These should be configurable placeholders until their actual deployment URLs and
 - Platformer
 
 **Image:**
-`public/images/super_mario.png`
+`public/images/pixelbound-adventure-small.jpg`
 
 **Play URL:**
-https://jensonchoi.github.io/super-mario-bros-clone/
+https://jensonchoi.github.io/pixelbound-adventure/
 
 **GitHub URL:**
-https://github.com/JensonChoi/super-mario-bros-clone
+https://github.com/JensonChoi/pixelbound-adventure
 
 ### Game 2: Cyberpunk Tower Defense
 
